@@ -13,7 +13,7 @@ class GetAllArtsAPI(ListAPIView):
     serializer_class = ArtSerializer
     queryset = Art.objects.all().order_by('?')
     filterset_fields = ['painter', 'title', 'year', 'type', 'location']
-    ordering_fields = ['painter', 'title', 'year', 'type', 'location']
+    ordering_fields = ['id','painter', 'title', 'year', 'type', 'location', '?']
 
 
 class GetArtAPI(RetrieveAPIView):
