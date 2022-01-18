@@ -12,7 +12,12 @@ from art.models import Art
 class GetAllArtsAPI(ListAPIView):
     serializer_class = ArtSerializer
     queryset = Art.objects.all().order_by('?')
-    filterset_fields = ['artist', 'title', 'year', 'type', 'location']
+    filterset_fields = {'artist': ['contains'],
+                        'title': ['contains'],
+                        'year': ['contains'],
+                        'type': ['contains'],
+                        'location': ['contains']
+                        }
     ordering_fields = ['id', 'artist', 'title', 'year', 'type', 'location', '?']
 
 
