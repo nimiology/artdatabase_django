@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Art(models.Model):
-    painter = models.CharField(max_length=2048)
+    artist = models.CharField(max_length=2048)
     title = models.CharField(max_length=2048)
     picture = models.URLField()
     year = models.CharField(max_length=100)

@@ -12,8 +12,8 @@ from art.models import Art
 class GetAllArtsAPI(ListAPIView):
     serializer_class = ArtSerializer
     queryset = Art.objects.all().order_by('?')
-    filterset_fields = ['painter', 'title', 'year', 'type', 'location']
-    ordering_fields = ['id','painter', 'title', 'year', 'type', 'location', '?']
+    filterset_fields = ['artist', 'title', 'year', 'type', 'location']
+    ordering_fields = ['id', 'artist', 'title', 'year', 'type', 'location', '?']
 
 
 class GetArtAPI(RetrieveAPIView):
@@ -22,12 +22,14 @@ class GetArtAPI(RetrieveAPIView):
 
 
 class GetARandomArtAPI(APIView):
+
     def get(self, requests, *args, **kwargs):
         queryset = random.choice(Art.objects.all())
         return Response(ArtSerializer(queryset).data)
 
 
 class GetARandomArtPictureAPI(APIView):
+
     def get(self, requests, *args, **kwargs):
         queryset = random.choice(Art.objects.all())
         return HttpResponseRedirect(ArtSerializer(queryset).data['picture'])
